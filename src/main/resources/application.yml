@@ -1,0 +1,12 @@
+#####  项目启动端口    #####
+server:
+  port: 8080
+  
+#####  spring配置     #####
+## 热部署 ##
+spring:
+     devtools:
+         restart:
+         enabled: false #是否开启开发者工具（true/false）
+         additional-paths: src/main/java
+         exclude: static/**,WEB-INF/view/**
