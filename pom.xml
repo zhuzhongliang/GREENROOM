@@ -3,7 +3,7 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 
 	                         http://maven.apache.org/xsd/maven-4.0.0.xsd">
-	<modelVersion>4.0.0</modelVersion>
+	<modelVersion>4.0.0</modelVersion> 
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
@@ -25,6 +25,12 @@
 	</properties>
 	<!-- springboot 添加依賴 -->
 	<dependencies>
+	<dependency>
+      <!--3.0的junit是使用编程的方式来进行测试，而junit4是使用注解的方式来运行junit-->
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <scope>test</scope>
+    </dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter</artifactId>
@@ -38,8 +44,8 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
-	</dependencies>
-	<!-- 热部署 -->
+		
+		   	<!-- 热部署 -->
 	<!-- devtools可以实现页面热部署 -->
 	<!-- 重启快是因为只加载了修改的class-->
 	<dependency>
@@ -48,7 +54,66 @@
             <optional>true</optional>
             <scope>true</scope>
     </dependency>
-    <!--  -->
+    <!-- 添加lombok  注解 形式get  set依赖 -->
+    <dependency>
+        <groupId>org.projectlombok</groupId>
+        <artifactId>lombok</artifactId>
+        <optional>true</optional>
+    </dependency>
+    <!-- 添加mybatis-plus依赖 -->
+    <dependency>
+        <groupId>com.baomidou</groupId>
+        <artifactId>mybatis-plus-boot-starter</artifactId>
+        <version>3.1.1</version>
+    </dependency>
+    <!-- 这是mybatis-plus的代码自动生成器 -->
+	<dependency>
+	    <groupId>com.baomidou</groupId>
+	    <artifactId>mybatis-plus-generator</artifactId>
+	    <version>3.1.1</version>
+	</dependency>
+	<!-- 添加模板依赖 -->
+	<dependency>
+     	<groupId>org.springframework.boot</groupId>
+     	<artifactId>spring-boot-starter-thymeleaf</artifactId>
+	</dependency>
+
+    <!-- 这是mysql的依赖 -->
+	<dependency>
+	  <groupId>mysql</groupId>
+	  <artifactId>mysql-connector-java</artifactId> 
+	  <version>5.1.38</version>
+	</dependency> 
+	
+	<!-- 添加okhttp依赖 -->
+	<dependency>
+	    <groupId>com.squareup.okhttp3</groupId>
+	    <artifactId>okhttp</artifactId>
+	    <version>4.1.0</version>
+	</dependency>
+	<!-- 添加fastjson依赖 -->
+	<dependency>
+	    <groupId>com.alibaba</groupId>
+	    <artifactId>fastjson</artifactId>
+	    <version>1.2.58</version>
+	</dependency>
+	
+	</dependencies>
+ 	
+    <resources>
+            <resource>
+                <directory>src/main/webapp</directory>
+            </resource>
+            <resource>
+                <directory>src/main/resources</directory>
+            </resource>
+            <resource>
+                <directory>src/main/java</directory>
+                <includes>
+                    <include>**/*.xml</include>
+                </includes>
+            </resource>
+        </resources>
 	<build>
 		<plugins>
 			<plugin>

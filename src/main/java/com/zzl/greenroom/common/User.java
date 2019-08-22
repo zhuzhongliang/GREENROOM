@@ -1,6 +1,12 @@
-package com.zzl.greenroom.module.system.pojo;
+package com.zzl.greenroom.common;
 
 import java.util.Date;
+
+import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableName;
+
+
+
 
 /**
  * @author zzl
@@ -11,12 +17,14 @@ import java.util.Date;
  * @author Administrator
  *
  */
+@TableName("sys_user")
 public class User {
 	
 	
 	/**
 	 * 主键id
 	 */
+	@TableId
 	private Integer id;
 	/**
 	 * 姓名
@@ -30,7 +38,7 @@ public class User {
 	/**
 	 * 头像
 	 */
-	private String headImage;
+	private String avatar;
 	/**
           * 密码
      */
@@ -93,11 +101,11 @@ public class User {
 	public void setAccount(String account) {
 		this.account = account;
 	}
-	public String getHeadImage() {
-		return headImage;
+	public String getAvatar() {
+		return avatar;
 	}
-	public void setHeadImage(String headImage) {
-		this.headImage = headImage;
+	public void setHeadImage(String avatar) {
+		this.avatar = avatar;
 	}
 	public String getPassword() {
 		return password;
@@ -167,7 +175,7 @@ public class User {
 	}
 	@Override
 	public String toString() {
-		return "User [id=" + id + ", name=" + name + ", account=" + account + ", headImage=" + headImage + ", password="
+		return "User [id=" + id + ", name=" + name + ", account=" + account + ", headImage=" + avatar + ", password="
 				+ password + ", salt=" + salt + ", birthday=" + birthday + ", sex=" + sex + ", email=" + email
 				+ ", phone=" + phone + ", roleid=" + roleid + ", deptid=" + deptid + ", status=" + status
 				+ ", createtime=" + createtime + ", version=" + version + "]";
