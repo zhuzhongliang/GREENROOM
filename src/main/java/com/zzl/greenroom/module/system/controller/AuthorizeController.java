@@ -1,10 +1,13 @@
 package com.zzl.greenroom.module.system.controller;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.zzl.greenroom.common.AccessToken;
 import com.zzl.greenroom.common.GithubUser;
@@ -25,8 +28,9 @@ public class AuthorizeController {
 	private String redirectUri;
 	
 	@GetMapping("/callback")
-	public String callback(@RequestParam(value="code") String code,
-						   @RequestParam(value="state") String state) {
+	public ModelAndView callback(@RequestParam(value="code") String code,
+						   @RequestParam(value="state") String state,
+						   HttpServletRequest request ) {
 		AccessToken accessToken = new AccessToken();
 		accessToken.setClient_id(clientId);
 		accessToken.setClient_secret(clientSecret);
@@ -35,8 +39,14 @@ public class AuthorizeController {
 		accessToken.setState(state);
 		String token = githubProvider.getAccessToken(accessToken);
 		GithubUser user = githubProvider.getUser(token);
-		System.out.println(user.getName());
-		return "index";
+		if (user!=null) {
+			//user不为空  登陆成功
+			request.getSession().setAttribute("user", user);
+			return new ModelAndView("redirect:/");
+		}else {
+			//user为空 登陆失败
+			return new ModelAndView("redirect:/");
+		}
 		
 	}
 }
