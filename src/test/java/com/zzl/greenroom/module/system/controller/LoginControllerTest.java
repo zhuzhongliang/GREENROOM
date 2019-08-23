@@ -20,8 +20,8 @@ public class LoginControllerTest {
 	
 	@Test
 	public void testLogin() {
-		List<User> list = useraMapper.selectList(null);
-		System.out.println(list);
+	
+		
 	}
 
 }

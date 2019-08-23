@@ -22,7 +22,7 @@ public class LoginController {
 	@ResponseBody
 	public String Login() {
 		
-		List<User> list = userMapper.selectList(null);
+		
 		return "login";
 		
 	}
